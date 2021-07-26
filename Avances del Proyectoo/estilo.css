@@ -1,0 +1,163 @@
+/*----- ------ ESTILOS DE LA PORTADA  ------ ------*/
+*{
+padding: 0;
+margin: 0;
+text-decoration: none;
+list-style: none;
+box-sizing: border-box;
+
+  }
+  body{
+    font-family: montserrat;
+  }
+  header{
+    display: flex;
+  }
+  
+  nav{
+    background: black;
+    height: 80px;
+    width: 100%;
+   
+  }
+  label.logo{
+    color: #fbaf32;
+    font-size: 25px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+  }
+  .logo-imagen{
+      height: 100%;
+  }
+  nav ul{
+    float: right;
+    margin-right: 20px;
+  }
+  nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+  }
+  nav ul li a{
+    color: #fbaf32;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  a.active,a:hover{
+    background: white;
+    transition: .5s;
+  }
+/*---------- imagen de fondo ---------*/
+  .imagen{
+    width: 85pc;
+        height: 500px;
+        display: block;
+        margin: auto;
+        
+    }   
+  
+/*--------- Galeria de Productos ----------*/ 
+
+.titulo-galeria {
+    text-align: center;
+    height: 40px ;
+}
+/* ---- ----- ----- Carousel ----- ----- ----- */
+
+.carousel {
+  align-items: center;
+  display: flex;
+  margin: 20px 0 64px;
+  
+}
+
+
+.window {
+  overflow: hidden;
+  width: 205pc;
+  padding: 5px;
+  align-items: center;
+}
+
+.project-container {
+  left: 0;
+  position: relative;
+  width: 1500px;
+
+  display: flex;
+ flex-wrap: wrap;
+}
+
+.project-container button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.project-container button:focus-within {
+  outline: 3px solid var(--verde);
+}
+
+.project {
+  border-radius: 5px;
+  border: 2px solid #000;
+  display: inline-block;
+  height: 400px;
+  margin: 0 8px;
+  transition: all 0.2s ease-in-out;
+  width: 250px;
+}
+.project:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.arrow {
+  height: 75px;
+  transition: all 0.2s ease-in-out;
+  width: 75px;
+}
+.arrow:hover {
+  transform: scale(1.1);
+}
+
+.arrow-left {
+  background: center / contain no-repeat url(./logos/back-7.png);
+  background-color: var(--verde);
+  border-radius: 50%;
+}
+
+.arrow-right {
+  background: center / contain no-repeat url(./logos/next-10.png);
+  background-color: var(--verde);
+  border-radius: 50%;
+}
+/*-------- Informacion sobre la pagina ---------*/
+  .footer1 {
+    background-color:#fbaf32;
+    width: 100%;
+    height: 45px;
+  }
+  .footer {
+    background-color:#fbaf32;
+    width: 100%;
+    height: 45px;
+  }
+
+    .imagen-logo{
+        width: 40px;
+        height: 40px;
+        float: right;
+        margin: 5px;
+        
+    }
+    .parrafo {
+        padding: 20px;
+        font-size: 20px;
+    }
+    
+
+ 
