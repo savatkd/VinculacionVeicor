@@ -1,63 +1,86 @@
-function factura(){
-    var fecha = new Date()
-    var numerodefac = 0;
-    var nomcliente = document.getElementById('nombre_cliente').value;
-    var idcliente = document.getElementById('nombre_cliente').value;
-    var telecliente = document.getElementById('telefonoc').value;
-    var direcliente = document.getElementById('direccionc').value;
-    var producto;
-    var cantidadp = new Number();
-    var a = 0;
-    var Cantidad;
-    var precio = [];
-    var i = 0;
-    var suma = 0;
-    var total = 0;
-    var iva;
-    var subtotal;
-    var pago;
-    numerodefac = Math.floor(Math.random()*99);
-    document.write('<strong>Numero de factura: </strong>'+numerodefac+'</br>');
-    document.write('<strong>Fecha: </strong>');
-    document.write(fecha.getDate());
-    document.write('/');
-    document.write(fecha.getMonth());
-    document.write('/');
-    document.write(fecha.getFullYear()+'</br>');
-    document.write('');
-    document.write('<strong>Hora de facuracion: </strong>');
-    document.write(fecha.getHours());
-    document.write(':');
-    document.write(fecha.getMinutes());
-    document.write(':');
-    document.write(fecha.getSeconds()+'</br>');
-    pago = (prompt('Digite su forma de pago. (Tarjeta o Efectivo)'));
-    document.write('<strong>Forma de pago: </strong>'+pago);
-    document.write('<h1>*----------Datos del cliente----------*</h1>');
-    document.write('<strong>Nombre del Cliente: </strong>'+nomcliente+'</br>');
-    document.write('<strong>Id del CLiente: </strong>'+idcliente+'</br>');
-    document.write('<strong>Direccion del Cliente: </strong>'+direcliente+'</br>');
-    document.write('<h1>*----------Productos Adquiridos----------*</h1>');
-    /*-Se crea un cliclo para almacenar los datos-*/
-    while(i==a){
-        producto = prompt('Ingrese Producto');
-        cantidadp = prompt('Ingrese la cantidad de '+producto+'.');
-        precio[i] = parseInt(prompt('Ingrese precio de producto'));
-        document.write('<strong>Producto: </strong>' +producto+'</br>');
-        document.write('<strong>Cantidad: </strong>' +cantidadp+'</br>');
-        document.write('<strong>Precio: </strong>' +precio[i]+'</br>');
-        document.write('<strong>IVA: </strong>' +iva+'</br>');
-        document.write('<strong>Total: </strong>'+total+'</br>');
-        a = prompt('Para continuar digite "0" y para terminar cualquier numero.');
-        suma = suma+precio[i];
-        subtotal= cantidadp*suma;
-        iva = subtotal*0.12;
-        total = subtotal+iva;
-    }
-    document.write('<h2>----------------------------------------</h2>');
-    document.write('<br><h3>IVA: '+iva+'</h3>');
-    document.write('<h3>Subtotal: '+subtotal+'</h3>');
-    document.write('<h2><br>Total: '+total+'</h2>');
-    document.write('<br><button onclick="window.print()">Imprimir</button>');
+const factura = document.getElementById('factura');
+const inputs = document.querySelectorAll('#factura input');
 
-}   
+const expresiones = {
+	nombres: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	apellidos: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	telefono: /^\d{10}$/, //  10 numeros.
+    direccion: /^[a-zA-ZÀ-ÿ\s]{1,40}$ /, // Letras y espacios, pueden llevar acentos.
+}
+
+const campos = {
+	nombres: false,
+	apellidos: false,
+	correo: false,
+	telefono: false,
+	direccion: false
+}
+
+const validarFactura = (e) => {
+	switch (e.target.name) {
+		case "nombres":
+			validarCampo(expresiones.nombres, e.target, 'nombres');
+		break;
+        
+		case "apellidos":
+			validarCampo(expresiones.apellidos, e.target, 'apellidos');
+		break;
+		
+		case "correo":
+			validarCampo(expresiones.correo, e.target, 'correo');
+		break;
+
+		case "telefono":
+			validarCampo(expresiones.telefono, e.target, 'telefono');
+		break;
+        
+        case "direccion":
+			validarCampo(expresiones.direccion, e.target, 'direccion');
+		break;
+	}
+}
+
+const validarCampo = (expresion, input, campo) => {
+	if(expresion.test(input.value)){
+		document.getElementById(`grupo__${campo}`).classList.remove('factura__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.add('factura__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+		document.querySelector(`#grupo__${campo} .factura__input-error`).classList.remove('factura__input-error-activo');
+		campos[campo] = true;
+	} else {
+		document.getElementById(`grupo__${campo}`).classList.add('factura__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.remove('factura__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+		document.querySelector(`#grupo__${campo} .factura__input-error`).classList.add('factura__input-error-activo');
+		campos[campo] = false;
+	}
+}
+
+
+inputs.forEach((input) => {
+	input.addEventListener('keyup', validarFactura);
+	input.addEventListener('blur', validarFactura);
+});
+
+formulario.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const terminos = document.getElementById('terminos');
+	if(campos.nombres && campos.apellidos && campos.correo && campos.telefono && campos.direccion && terminos.checked ){
+		factura.reset();
+
+		document.getElementById('factura__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
+		setTimeout(() => {
+			document.getElementById('factura__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
+		}, 5000);
+
+		document.querySelectorAll('.factura__grupo-correcto').forEach((icono) => {
+			icono.classList.remove('factura__grupo-correcto');
+		});
+	} else {
+		document.getElementById('factura__mensaje').classList.add('factura__mensaje-activo');
+	}
+});

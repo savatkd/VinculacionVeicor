@@ -5,15 +5,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facturación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="facturacion.css">
 </head>
 <body>
-    <h1 class="cd">Datos Del Cliente</h1>
-    <br/>Nombre : <br/> <input type="text" id="nombre_cliente" placeholder="Ingrese Nombre del Cliente"><br/>
-    <br/>Id: <br/> <input type="text" id="id_cliente" placeholder="Ingrese su Id"><br>
-    <br/> Telefono : <br> <input type="text" id="telefonoc" placeholder="Ingrese su numero de telefono."><br/> 
-    <br/> Direccion : <br> <input type="text" id="direccionc" placeholder="Ingrese su Dirrecion"><br/>  
-     <br/> <input onclick="factura()" type="submit" value="Enviar"> 
+    
+    <main>
+		<form action="" class="factura" id="factura">
+			
+
+			<!-- Grupo: Nombres -->
+			<div class="factura__grupo" id="grupo__nombres">
+				<label for="nombre" class="factura__label">Nombres</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="factura__input" name="nombre" id="nombre" placeholder="Edwin Dennis">
+					<i class="factura__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="factura__input-error"> ¡Atencion no has llenado los campos requeridos!.</p>
+			</div>
+
+            <!-- Grupo: Apeliidos -->
+			<div class="factura__grupo" id="grupo__apellidos">
+				<label for="nombre" class="factura__label">Apellidos</label>
+				<div class="factura__grupo-input">
+					<input type="text" class="factura__input" name="apellidos" id="apellidos" placeholder="Rivadeneira Salvatierra">
+					<i class="factura__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="factura__input-error">¡Atencion no has llenado los campos requeridos!.</p>
+			</div>
+			
+
+			
+			<!-- Grupo: Correo Electronico -->
+			<div class="factura__grupo" id="grupo__correo">
+				<label for="correo" class="factura__label">Correo Electrónico</label>
+				<div class="factura__grupo-input">
+					<input type="email" class="factura__input" name="correo" id="correo" placeholder="admin@veicor.com">
+					<i class="factura__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="factura__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+			</div>
+
+			<!-- Grupo: Teléfono -->
+			<div class="factura__grupo" id="grupo__telefono">
+				<label for="telefono" class="factura__label">Teléfono</label>
+				<div class="factura__grupo-input">
+					<input type="text" class="factura__input" name="telefono" id="telefono" placeholder="0982101658">
+					<i class="factura__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="factura__input-error">El telefono solo puede contener numeros y el maximo son 10 dígitos.</p>
+			</div>
+
+            <!-- Grupo: Dirreción-->
+            <div class="factura_grupo" id="grupo_direccion">
+                <label for="direccion" class="factura__label">Dirección</label>
+                <div class="factura__grupo-input">
+					<input type="text" class="factura__input" name="direccion" id="direccion" placeholder="Av Locos, calle los ceibos">
+					<i class="factura__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="factura__input-error">La direccion debe tener menos de 30 caracteres</p>
+            </div>
+
+			<!-- Grupo: Terminos y Condiciones -->
+			<div class="factura__grupo" id="grupo__terminos">
+				<label class="factura">
+					<input class="factura__checkbox" type="checkbox" name="terminos" id="terminos">
+					Acepto los Terminos y Condiciones
+				</label>
+			</div>
+
+			<div class="factura__mensaje" id="factura__mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+			</div>
+
+			<div class="factura__grupo factura__grupo-btn-enviar">
+				<button  type="submit" class="factura__btn">Finalizar Compra</button>
+				<p class="factura__mensaje-exito" id="factura__mensaje-exito">¡Datos enviados exitosamente!</p>
+                
+			</div>
+		</form>
+	</main>
+	
     <script src="factura.js"></script>
 </body>
 </html>
