@@ -17,7 +17,7 @@ const campos = {
 	direccion: false
 }
 
-const validarFactura = (e) => {
+const validaractura = (e) => {
 	switch (e.target.name) {
 		case "nombres":
 			validarCampo(expresiones.nombres, e.target, 'nombres');
