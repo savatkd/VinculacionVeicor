@@ -99,11 +99,21 @@
 		</div>
 
 		<div class="factura__grupo factura__grupo-btn-enviar">
-			<button  type="submit" class="factura__btn">Finalizar Compra</button>
+			<button  onclick="alertabutton()" type="submit" class="factura__btn">Finalizar Compra</button>
 			<p class="factura__mensaje-exito" id="factura__mensaje-exito">¡Datos enviados exitosamente!</p>
 			
 		</div>
+		<script>
+			function alertabutton(){
+			  alert("La compra se realizo correctamente");
+		  }
+	  </script>
+	 
 	</main>
+	<footer class="pie">
+		<p class="texto"> Almacen Veicor &#169; 2021 || Derechos Reservados </p>
+	
+	  </footer>
 	<script src="factura.js"></script>
 	<script src="/java/Productoycarrito.js"></script>
 </body>
