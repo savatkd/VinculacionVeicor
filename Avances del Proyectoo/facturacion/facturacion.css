@@ -4,9 +4,16 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
-	background: #d1b072;
+	background: #ffffff;
 }
-
+.titulo{
+	text-align: center;
+	color: #fbaf32;
+}
+.imagen img{
+	margin:10px auto;
+	display:block;
+}
 main {
 	max-width: 800px;
 	width: 90%;
@@ -16,7 +23,7 @@ main {
 
 .factura {
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: 1fr 1fr 1fr ;
 	gap: 20px;
 }
 
@@ -33,7 +40,7 @@ main {
 
 .factura__input {
 	width: 100%;
-	background: #fff;
+	background: #fbaf32;
 	border: 3px solid transparent;
 	border-radius: 3px;
 	height: 45px;
